@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { Post } from "./types";
+import { PostParams } from "./types";
 import Link from "next/link";
 
 type Props = {
-  posts: Post[];
+  posts: PostParams[];
 }
 
 export async function getStaticProps() {
@@ -33,7 +33,7 @@ export default function Home({ posts }: Props) {
       <div className="">
         <h2>群馬県の掲示板</h2>
         <Link href="/create-post" className="">Create new Post</Link>
-        {posts.map((post: Post) => (
+        {posts.map((post: PostParams) => (
           <div key={post.id} className="">
             <Link href={`posts/${post.id}`} className="">
               <h2>{post.title}</h2>
