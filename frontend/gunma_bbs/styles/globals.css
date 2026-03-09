@@ -1,24 +1,182 @@
-body{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* 和風 (Japanese style) */
+body {
+    font-family: 'Yu Mincho', 'Yū Mincho', 'Sawarabi Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'HGS明朝E', 'ＭＳ Ｐ明朝', 'MS PMincho', serif;
+    background-color: #fdfaf4; /* 和紙風のアイボリー (Washi paper ivory) */
+    color: #333333; /* 墨色 (Sumi ink) */
+    line-height: 1.8;
 }
-.pageContainer{
-    background-color: palegoldenrod;
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 600px;
+
+h1, h2, h3 {
+    color: #4b2d16; /* 焦茶 (Dark brown, burnt tea) */
+    border-bottom: 2px solid #8b0000; /* 臙脂色 (Enji, dark red) */
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-weight: normal;
 }
-.titleContainer{
-    display: flexbox;
-    background-color: yellow;
+
+.pageContainer {
+    background-color: #ffffff; /* 白 (White) */
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 650px;
+    border: 1px solid #dcd3b2; /* 浅黄 (Pale yellow brown) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 控えめな影 */
+    border-radius: 4px; /* 日本の伝統美に合わせた控えめな角丸 */
+}
+
+/* タイトルコンテナ */
+.titleContainer {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
+    background-color: transparent;
 }
-.createButton{
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
+
+.titleContainer h2 {
+    border: none;
+    font-size: 2.2rem;
     text-align: center;
-    margin-bottom: 20px;
+    position: relative;
+    padding: 10px 0;
+}
+
+.titleContainer h2::before,
+.titleContainer h2::after {
+    content: "〜";
+    color: #8b0000;
+    margin: 0 15px;
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+/* 新規作成ボタン */
+.createButton {
+    display: block;
+    width: fit-content;
+    padding: 12px 35px;
+    background-color: #00563f; /* 天鵞絨 (Birodo, dark green) */
+    color: #fdfaf4;
+    border-radius: 3px;
+    text-align: center;
+    margin: 0 auto 35px auto;
     text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.createButton:hover {
+    background-color: #003a2a;
+    transform: translateY(-2px);
+}
+
+/* 投稿リストのアイテム （index.tsx の div elements に適用） */
+.pageContainer > div {
+    border-top: 1px dashed #dcd3b2;
+    padding: 25px 0;
+}
+
+/* リンクとテキスト */
+a {
+    color: #00563f;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #8b0000;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #4a4a4a;
+}
+
+/* フォームと入力項目周り (create-post など) */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4b2d16;
+}
+
+input[type="text"],
+textarea {
+    padding: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #dcd3b2;
+    border-radius: 3px;
+    background-color: #faf8f5;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00563f;
+    background-color: #ffffff;
+}
+
+/* ボタンの共通スタイル */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-right: 12px;
+    transition: opacity 0.3s, background-color 0.3s, color 0.3s;
+    font-weight: bold;
+}
+
+/* 編集などの標準ボタン */
+button:not([type="submit"]):not([onClick]) {
+    background-color: #e6dac3; /* 象牙 (Ivory gray/brown) */
+    color: #333333;
+}
+
+button:not([type="submit"]):not([onClick]):hover {
+    background-color: #d1c0a8;
+}
+
+/* 送信ボタン (投稿など) */
+button[type="submit"] {
+    background-color: #8b0000; /* 臙脂色 */
+    color: #fdfaf4;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    align-self: flex-start;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover {
+    opacity: 0.85;
+}
+
+/* 削除用ボタン */
+button[onClick] {
+    background-color: transparent;
+    border: 1px solid #8b0000;
+    color: #8b0000;
+    padding: 9px 19px;
+}
+
+button[onClick]:hover {
+    background-color: #8b0000;
+    color: #fdfaf4;
 }
